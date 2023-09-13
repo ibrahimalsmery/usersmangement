@@ -1,0 +1,19 @@
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+/* Icons. Uncomment required icon fonts */
+@import "../../public/template/assets/vendor/fonts/boxicons.css";
+
+/* Core CSS */
+@import "../../public/template/assets/vendor/css/core.css";
+
+@import "../../public/template/assets/vendor/css/theme-default.css";
+
+@import "../../public/template/assets/css/demo.css";
+
+/* Vendors CSS */
+@import "../../public/template/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css";
+
+
+@import "../../public/template/assets/vendor/css/pages/page-auth.css"
