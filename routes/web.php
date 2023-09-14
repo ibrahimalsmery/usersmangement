@@ -26,6 +26,6 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'middleware' => ['
         // /dashboard/users/list
         Route::get('/list', [UsersController::class, 'users_list_view'])->name('list.view');
         // /dashboard/users/list/data
-        Route::get('/list/data', [UsersController::class, 'users_list_data'])->name('list.data');
+        Route::post('/list/data', [UsersController::class, 'users_list_data'])->name('list.data');
     });
 });

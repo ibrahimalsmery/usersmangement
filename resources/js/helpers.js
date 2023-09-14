@@ -1,4 +1,3 @@
+import { createRoot } from "react-dom/client";
 
-export function url(){
-    console.log(import.meta);
-}
+export const reactStart = createRoot(document.getElementById('app'));

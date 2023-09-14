@@ -8,7 +8,7 @@ use Illuminate\View\View;
 class MainController extends Controller
 {
     //
-    function landing_view(): View
+    function landing_view()
     {
         return view('landing.landing', ['title' => env('APP_NAME') . '|Landing']);
     }
