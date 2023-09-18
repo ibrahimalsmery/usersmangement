@@ -27,5 +27,10 @@ Route::group(['prefix' => '/dashboard', 'as' => 'dashboard.', 'middleware' => ['
         Route::get('/list', [UsersController::class, 'users_list_view'])->name('list.view');
         // /dashboard/users/list/data
         Route::post('/list/data', [UsersController::class, 'users_list_data'])->name('list.data');
+        Route::get('/list/create', [UsersController::class, 'users_edit_create'])->name('create');
+        Route::post('/list/store', [UsersController::class, 'users_edit_store'])->name('store');
+        Route::get('/list/edit/{user}', [UsersController::class, 'users_edit_user_view'])->name('edit');
+        Route::post('/list/edit/{user}', [UsersController::class, 'users_edit_user'])->name('update');
+        Route::get('/list/delete/{user}', [UsersController::class, 'users_delete'])->name('delete');
     });
 });
