@@ -48,7 +48,8 @@ function Table(props) {
     if (!table) return;
 
     const attrs = { ...props, table: null }
-    let _globalsearchattrs = { ...table.globalSearch, placeholder: ((table.term) ? table.term : table.globalSearch.placeholder) }
+    let _globalsearchattrs = {};
+    if (table.globalSearch) _globalsearchattrs = { ...table.globalSearch, placeholder: ((table.term) ? table.term : table.globalSearch.placeholder) }
 
     return (
         <div>
@@ -120,6 +121,28 @@ function Table(props) {
             </div>
         </div>
     )
+}
+
+export type TableLinks = {
+    container_classes?: string,
+    link_classes?: string,
+    active_link_class?: string,
+}
+
+export type TableColumns = {
+    label?: string | Function,
+    name?: string,
+    search?: boolean | object,
+    data?: string | Function,
+    term?: string,
+};
+export type TableType = {
+    endpoint: string,
+    globalSearch?: boolean | object,
+    columnSearch?: boolean,
+    columns: Array<TableColumns>,
+    term?: string,
+    links?: TableLinks
 }
 
 export default Table

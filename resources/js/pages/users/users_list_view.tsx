@@ -2,12 +2,15 @@ import React from 'react';
 import route from 'ziggy-js';
 import { reactStart } from '../../helpers';
 import moment from 'moment/moment';
-import Table from '../components/table/Table';
+import Table, { TableColumns, TableType } from '../components/table/Table';
 import axios from 'axios';
+
 
 function App() {
 
     function deleteUser(event, data) {
+        const yes = window.confirm(`Are you sure you want delete ${data.name}`)
+        if (!yes) return;
         axios
             .get(route('dashboard.users.delete', { user: data.id }))
             .then(() => {
@@ -18,32 +21,32 @@ function App() {
 
     const [table, setTable] = React.useState({
         endpoint: route('dashboard.users.list.data'),
-        globalSearch: { className: "form-control form-control-sm", placeholder: "global search." },
+        globalSearch: { placeholder: "global search", className: "form-control form-control-sm" },
         columnSearch: true,
-        columns: [
+        columns: [,
             {
                 label: 'id',
                 name: "id",
-                search: { type: "number", placeholder: "enter id to search.", className: "form-control  form-control-sm ", },
+                search: { type: "number", placeholder: "enter id to search.", className: "form-control  form-control-sm " },
                 data: (column, data, index) => <td key={index}>{data.id}</td>,
             },
             {
                 label: 'name',
                 name: "name",
                 data: 'name',
-                search: { type: 'text', placeholder: "enter name to search.", className: "form-control  form-control-sm ", }
+                search: { type: 'text', placeholder: "enter name to search.", className: "form-control  form-control-sm " }
             },
             {
                 label: 'email',
                 name: "email",
                 data: 'email',
-                search: { type: 'text', placeholder: "enter email to search.", className: "form-control  form-control-sm ", }
+                search: { type: 'text', placeholder: "enter email to search.", className: "form-control  form-control-sm " }
             },
             {
                 label: 'Register Date',
                 name: "created_at",
                 data: (column, data, index) => (<td key={index}>{data.register_date_format}</td>),
-                search: { type: 'text', placeholder: 'Year-Month-Day in numbers.', className: "form-control  form-control-sm ", }
+                search: { type: 'text', placeholder: 'Year-Month-Day in numbers.', className: "form-control  form-control-sm " }
             },
             {
                 label: 'Action',
@@ -57,9 +60,9 @@ function App() {
                     )
                 },
             }
-        ],
-        links: { container_classes: 'btn-group my-2 ', link_classes: 'btn btn-sm btn-outline-secondary ', active_link_class: 'active', }
-    });
+        ] as TableColumns,
+        links: ({ container_classes: 'btn-group my-2 ', link_classes: 'btn btn-sm btn-outline-secondary ', active_link_class: 'active', } as TableLinks)
+    } as TableType);
     return (
         <div className="card">
             <div className="card-header">

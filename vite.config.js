@@ -10,7 +10,7 @@ export default defineConfig({
             input: [
                 resources('css/app.css'),
                 resources('js/app.js'),
-                pages('users/users_list_view.jsx'),
+                pages('users/users_list_view.tsx'),
             ],
             refresh: true,
         }),
